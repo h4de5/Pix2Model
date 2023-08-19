@@ -1,6 +1,7 @@
 version: "3.9"
 services:
   client:
+    container_name: pix2model-client
     stdin_open: true
     build:
       context: ./web
@@ -21,6 +22,7 @@ services:
     profiles:
       - develop
   client_deployed:
+    container_name: pix2model-client_deployed
     stdin_open: true
     build:
       context: ./web
@@ -43,6 +45,7 @@ services:
     profiles:
       - deploy
   certbot:
+    container_name: pix2model-certbot
     image: certbot/certbot:latest
     volumes:
       - ./certbot/www/:/var/www/certbot/:rw
@@ -52,6 +55,7 @@ services:
     profiles:
       - cert
   backend:
+    container_name: pix2model-backend
     build: .
     depends_on:
       - redis
@@ -65,8 +69,10 @@ services:
       target: /usr/src/app/backend_log/
       source: ${BACKEND_LOG} 
   redis:
+    container_name: pix2model-redis
     image: "redis:alpine"
   dashboard:
+    container_name: pix2model-dashboard
     build: ./dashboard
     depends_on:
       - redis
@@ -78,6 +84,7 @@ services:
     expose:
       - "9181"
   worker:
+    container_name: pix2model-worker
     build: .
     depends_on:
       - redis
