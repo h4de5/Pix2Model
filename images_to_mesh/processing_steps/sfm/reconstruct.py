@@ -118,7 +118,14 @@ def reconstruct_with_colmap(image_list: List[str]) -> List[str]:
         'colmap', 'patch_match_stereo',
         '--workspace_path', dense_path,
         '--workspace_format', 'COLMAP',
-        '--PatchMatchStereo.geom_consistency', 'true'
+        '--PatchMatchStereo.geom_consistency', 'true',
+        # see: https://colmap.github.io/faq.html#speedup-dense-reconstruction
+        '--PatchMatchStereo.cache_size', '25',
+        '--PatchMatchStereo.window_step', '2'
+        # enable multiple thread on single gpu 
+        # see: https://colmap.github.io/faq.html#multi-gpu-support-in-dense-reconstruction
+        # unfortunatelly runs into TDR timeout, which I cannot disable in headless environment
+        # '--PatchMatchStereo.gpu_index', '0,0'
     ]
     try:
         for line in execute_subprocess(command=patch_match_command, logfile=logfile, error_log=error_log):
