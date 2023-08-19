@@ -96,6 +96,7 @@ services:
       target: /usr/src/app
       source: .
     command: sh -c "pipenv run rqworker --exception-handler 'images_to_mesh.app.exception_handlers.exeption_handlers.queue_handler' --with-scheduler -u redis://redis:6379"
+    runtime: nvidia
     deploy:
       resources:
         reservations:
