@@ -28,8 +28,8 @@ services:
       context: ./web
       dockerfile: ./Dockerfile.nginx
     ports:
-      - "80:80"
-      - "443:443"
+      - "4480:80"
+      # - "443:443"
     depends_on:
       - backend
     volumes:
