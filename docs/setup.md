@@ -33,7 +33,7 @@ sudo apt-get install -y nvidia-docker2
 sudo systemctl restart docker
 
 # Check that it worked!
-docker run --gpus all nvidia/cuda:10.2-base nvidia-smi
+docker run --gpus all nvidia/cuda:11.0.3-base nvidia-smi
 ```
 
 The [NVIDIA CUDA toolkit](https://developer.nvidia.com/cuda-downloads) must be installed on the host system.
@@ -66,7 +66,7 @@ During the runtime of the project, the data folder containing the uploaded image
 - UPLOAD_FOLDER: Path to the locally mounted data folder
 - RQ_DASHBOARD_USERNAME: Username required for access to the dashboard
 - RQ_DASHBOARD_PASSWORD: Password required for access to the dashboard 
-- SSL_CERT_FOLDER: Path to the SLL certificate needed to run the server, can be copied from the tu wien server.
+- SSL_CERT_FOLDER: Path to the SSL certificate needed to run the server, can be copied from the tu wien server.
 - BACKEND_LOG: Path to the backend log
 
 ### Folder structure
