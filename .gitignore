@@ -136,3 +136,4 @@ dmypy.json
 /web/.DS_Store
 
 .vscode
+# data/**/log.txt
