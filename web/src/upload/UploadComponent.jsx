@@ -28,9 +28,9 @@ class Upload extends Component {
         uploadMultiple: true,
         parallelUploads: 100,
         maxFilesize: 50,
-        maxFiles: 100,
+        maxFiles: 1000,
         acceptedFiles: ".png, .jpg, .jpeg",
-        dictDefaultMessage: "Drop files here to upload<br/><small>Max 100 files, 10MB per file</small>",
+        dictDefaultMessage: "Drop files here to upload<br/><small>Max 1000 files, 50MB per file</small>",
         addRemoveLinks: true
       };
       var uploader = document.querySelector('#upload');
